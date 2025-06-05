@@ -16,8 +16,8 @@ export interface Place {
 
 @Component({
   selector: 'app-root',
-  templateUrl: './Places.component.html',
-  styleUrls: ['./Places.component.css'],
+  templateUrl: './places.component.html',
+  styleUrls: ['./places.component.css'],
   standalone: true,
   imports: [CommonModule, FormsModule,RouterModule]
 })
