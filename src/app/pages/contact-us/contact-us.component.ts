@@ -30,7 +30,7 @@ export interface FAQ {
 
 @Component({
   selector: 'app-contact',
-  templateUrl: './Contact-us.component.html',
+  templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.css'],
   standalone: true,
   imports: [CommonModule, FormsModule]
