@@ -1,0 +1,233 @@
+<div class="contact-container" dir="rtl">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-background">
+      <div class="hero-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&h=600&fit=crop" alt="تماس با ما" class="hero-image">
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">تماس با ما</h1>
+        <p class="hero-subtitle">
+          ما همیشه آماده پاسخگویی به سوالات و پیشنهادات شما هستیم
+        </p>
+        <div class="hero-description">
+          <p>
+            تیم پشتیبانی ما ۲۴ ساعته آماده خدمت‌رسانی به شما عزیزان است.
+            سوالات، پیشنهادات و انتقادات خود را با ما در میان بگذارید.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Info Section -->
+  <section class="contact-info-section">
+    <div class="container">
+      <h2 class="section-title">اطلاعات تماس</h2>
+      <div class="contact-info-grid">
+        <div 
+          *ngFor="let info of contactInfo; trackBy: trackByContactId"
+          class="contact-info-card"
+        >
+          <div class="contact-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="info.icon"></path>
+            </svg>
+          </div>
+          <h4>{{ info.title }}</h4>
+          <p>
+            <a *ngIf="info.link; else noLink" [href]="info.link" class="contact-link">
+              {{ info.value }}
+            </a>
+            <ng-template #noLink>{{ info.value }}</ng-template>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="contact-form-section hidden">
+    <div class="container">
+      <div class="form-content">
+        <div class="form-header">
+          <h2>پیام خود را برای ما ارسال کنید</h2>
+          <p>فرم زیر را تکمیل کنید تا در اسرع وقت با شما تماس بگیریم</p>
+        </div>
+
+        <!-- Success Message -->
+        <div *ngIf="isSubmitted" class="success-message">
+          <div class="success-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3>پیام شما با موفقیت ارسال شد!</h3>
+          <p>تیم ما در اسرع وقت با شما تماس خواهد گرفت.</p>
+        </div>
+
+        <!-- Contact Form -->
+        <form *ngIf="!isSubmitted" (ngSubmit)="onSubmit()" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">نام و نام خانوادگی *</label>
+              <input
+                type="text"
+                id="name"
+                [(ngModel)]="contactForm.name"
+                name="name"
+                required
+                class="form-input"
+                placeholder="نام کامل خود را وارد کنید"
+              >
+            </div>
+            <div class="form-group">
+              <label for="email">ایمیل *</label>
+              <input
+                type="email"
+                id="email"
+                [(ngModel)]="contactForm.email"
+                name="email"
+                required
+                class="form-input"
+                placeholder="example@email.com"
+              >
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">شماره تماس</label>
+              <input
+                type="tel"
+                id="phone"
+                [(ngModel)]="contactForm.phone"
+                name="phone"
+                class="form-input"
+                placeholder="۰۹۱۲۳۴۵۶۷۸۹"
+              >
+            </div>
+            <div class="form-group">
+              <label for="subject">موضوع *</label>
+              <select
+                id="subject"
+                [(ngModel)]="contactForm.subject"
+                name="subject"
+                required
+                class="form-select"
+              >
+                <option value="">موضوع پیام را انتخاب کنید</option>
+                <option value="general">سوال عمومی</option>
+                <option value="suggestion">پیشنهاد</option>
+                <option value="complaint">شکایت</option>
+                <option value="cooperation">همکاری</option>
+                <option value="technical">مشکل فنی</option>
+                <option value="content">محتوا و اطلاعات</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">پیام شما *</label>
+            <textarea
+              id="message"
+              [(ngModel)]="contactForm.message"
+              name="message"
+              required
+              class="form-textarea"
+              rows="6"
+              placeholder="پیام خود را اینجا بنویسید..."
+            ></textarea>
+          </div>
+
+          <button 
+            type="submit" 
+            class="submit-btn"
+            [disabled]="!isValidForm() || isSubmitting"
+            [class.loading]="isSubmitting"
+          >
+            <span *ngIf="!isSubmitting">ارسال پیام</span>
+            <span *ngIf="isSubmitting" class="loading-text">
+              <svg class="loading-spinner" fill="none" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.25"></circle>
+                <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" opacity="0.75"></path>
+              </svg>
+              در حال ارسال...
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <!-- <section class="map-section">
+    <div class="container">
+      <h2 class="section-title">موقعیت دفتر ما</h2>
+      <div class="map-container">
+        <div class="map-placeholder">
+          <div class="map-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <h3>نقشه تعاملی</h3>
+          <p>تهران، خیابان ولیعصر، پلاک ۱۲۳</p>
+          <button class="map-btn">مشاهده در نقشه</button>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h2 class="section-title">سوالات متداول</h2>
+      <p class="section-subtitle">
+        پاسخ سوالات رایج کاربران را در اینجا مشاهده کنید
+      </p>
+      <div class="faq-list">
+        <div 
+          *ngFor="let faq of faqs; trackBy: trackByFaqId"
+          class="faq-item"
+          [class.open]="faq.isOpen"
+        >
+          <button class="faq-question" (click)="toggleFAQ(faq)">
+            <span>{{ faq.question }}</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer" [class.show]="faq.isOpen">
+            <p>{{ faq.answer }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Media Section -->
+  <section class="social-section">
+    <div class="container">
+      <h2 class="section-title">ما را در شبکه‌های اجتماعی دنبال کنید</h2>
+      <p class="section-subtitle">
+        آخرین اخبار و مطالب را از طریق شبکه‌های اجتماعی دریافت کنید
+      </p>
+      <div class="social-links">
+        <a 
+          *ngFor="let social of socialLinks; trackBy: trackBySocialName"
+          [href]="social.url"
+          class="social-link"
+          [title]="social.name"
+        >
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path [attr.d]="social.icon"></path>
+          </svg>
+          <span>{{ social.name }}</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

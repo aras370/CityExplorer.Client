@@ -1,0 +1,206 @@
+<div class="app-container" dir="rtl">
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1 class="title">مکان‌های دیدنی جهان</h1>
+      <p class="subtitle">مکان‌های دیدنی و جذاب از سراسر جهان را جستجو و کاوش کنید</p>
+    </div>
+  </header>
+
+  <!-- Search and Filter Section -->
+  <section class="search-section">
+    <div class="container">
+      <div class="search-card">
+        <div class="search-controls">
+          <div class="search-input-container">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="جستجوی مکان..."
+              [(ngModel)]="searchQuery"
+              (input)="filterPlaces()"
+            />
+            <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"></path>
+            </svg>
+          </div>
+          
+          <select 
+            class="category-select"
+            [(ngModel)]="selectedCategory"
+            (change)="filterPlaces()"
+          >
+            <option value="all">همه دسته‌بندی‌ها</option>
+            <option value="historical">تاریخی</option>
+            <option value="religious">مذهبی</option>
+            <option value="natural">طبیعی</option>
+            <option value="recreational">تفریحی</option>
+            <option value="cultural">فرهنگی</option>
+          </select>
+        </div>
+
+        <div class="results-controls">
+          <p class="results-count">{{ filteredPlaces.length }} مکان یافت شد</p>
+          
+          <div class="view-toggle">
+            <button 
+              class="view-btn"
+              [class.active]="viewMode === 'grid'"
+              (click)="viewMode = 'grid'"
+            >
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6ZM14 6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V6ZM4 16a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2ZM14 16a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-2Z"></path>
+              </svg>
+              شبکه‌ای
+            </button>
+            <button 
+              class="view-btn"
+              [class.active]="viewMode === 'list'"
+              (click)="viewMode = 'list'"
+            >
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+              لیستی
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Places Display -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Grid View -->
+      <div *ngIf="viewMode === 'grid'" class="places-grid">
+        <div 
+          *ngFor="let place of paginatedPlaces; trackBy: trackByPlaceId"
+          class="place-card"
+        >
+          <div class="card-image">
+            <img [src]="place.imageUrl" [alt]="place.name" />
+            <span class="category-badge">{{ getCategoryLabel(place.category) }}</span>
+          </div>
+          
+          <div class="card-content">
+            <h3 class="place-name">{{ place.name }}</h3>
+            
+            <div class="place-location">
+              <svg class="location-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              {{ place.location }}
+            </div>
+            
+            <p class="place-description">{{ place.description }}</p>
+            
+            <div class="card-footer">
+              <a routerLink="/PlaceDetail" class="details-btn">اطلاعات بیشتر</a>
+              <div class="country-info">
+                <svg class="globe-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 919-9"></path>
+                </svg>
+                {{ place.country }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- List View -->
+      <div *ngIf="viewMode === 'list'" class="places-list">
+        <div 
+          *ngFor="let place of paginatedPlaces; trackBy: trackByPlaceId"
+          class="place-list-item"
+        >
+          <div class="list-image">
+            <img [src]="place.imageUrl" [alt]="place.name" />
+          </div>
+          
+          <div class="list-content">
+            <div class="list-header">
+              <h3 class="place-name">{{ place.name }}</h3>
+              <span class="category-badge">{{ getCategoryLabel(place.category) }}</span>
+            </div>
+            
+            <div class="place-location">
+              <svg class="location-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              {{ place.location }}
+            </div>
+            
+            <p class="place-description">{{ place.description }}</p>
+            
+            <div class="list-footer">
+              <button class="details-btn">اطلاعات بیشتر</button>
+              <div class="country-info">
+                <svg class="globe-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 919-9"></path>
+                </svg>
+                {{ place.country }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div *ngIf="filteredPlaces.length > 0" class="pagination">
+        <button 
+          class="pagination-btn" 
+          [disabled]="currentPage === 1"
+          [class.disabled]="currentPage === 1"
+          (click)="prevPage()"
+        >
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+        
+        <div class="pagination-pages">
+          <button 
+            *ngFor="let page of getPageNumbers()"
+            class="pagination-page" 
+            [class.active]="page === currentPage"
+            [class.ellipsis]="page < 0"
+            [disabled]="page < 0"
+            (click)="goToPage(page)"
+          >
+            {{ page < 0 ? '...' : page }}
+          </button>
+        </div>
+        
+        <button 
+          class="pagination-btn"
+          [disabled]="currentPage === totalPages"
+          [class.disabled]="currentPage === totalPages"
+          (click)="nextPage()"
+        >
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- No Results -->
+      <div *ngIf="filteredPlaces.length === 0" class="no-results">
+        <h3>هیچ مکانی یافت نشد</h3>
+        <p>لطفا معیارهای جستجو را تغییر دهید</p>
+        <button class="clear-filters-btn" (click)="clearFilters()">
+          پاک کردن فیلترها
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; ۲۰۲۴ راهنمای مکان‌های جهان. تمامی حقوق محفوظ است.</p>
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,261 @@
+<div class="place-details-container" dir="rtl">
+  <!-- Header -->
+  <!-- <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="nav-section">
+          <a href="/" class="logo">سفرنامه</a>
+          <nav class="main-nav">
+            <a href="/" class="nav-link">صفحه اصلی</a>
+            <a href="/destinations" class="nav-link">مقاصد</a>
+            <a href="/tours" class="nav-link">تورها</a>
+            <a href="/blog" class="nav-link">وبلاگ</a>
+            <a href="/contact" class="nav-link">تماس با ما</a>
+          </nav>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" (click)="onSavePlace()" title="ذخیره">
+            <i class="icon-heart"></i>
+          </button>
+          <button class="icon-btn" (click)="onSharePlace()" title="اشتراک‌گذاری">
+            <i class="icon-share"></i>
+          </button>
+          <button class="btn btn-primary">رزرو تور</button>
+        </div>
+      </div>
+    </div>
+  </header> -->
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-image">
+      <img [src]="place.heroImage" [alt]="place.name" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-info">
+          <div class="location">
+            <i class="icon-map-pin"></i>
+            <span>{{ place.location }}</span>
+          </div>
+          <h1 class="place-title">{{ place.name }}</h1>
+          <div class="place-meta">
+            <div class="rating">
+              <i class="icon-star filled"></i>
+              <span class="rating-value">{{ place.rating }}</span>
+              <span class="review-count">({{ place.reviewCount | number }} نظر)</span>
+            </div>
+            <span class="category-badge">{{ place.category }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Left Column -->
+        <div class="content-column">
+          <!-- Description -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">درباره {{ place.name }}</h2>
+            </div>
+            <div class="card-content">
+              <p class="description-text">
+                برج ایفل یکی از مشهورترین و شناخته‌شده‌ترین بناهای جهان است که در قلب پاریس، پایتخت فرانسه قرار دارد.
+                این برج آهنی با ارتفاع ۳۲۴ متر، نماد شهر پاریس و یکی از مهم‌ترین جاذبه‌های گردشگری جهان محسوب می‌شود.
+              </p>
+              <p class="description-text">
+                برج ایفل در سال ۱۸۸۹ میلادی به مناسبت صدمین سالگرد انقلاب فرانسه و برای نمایشگاه جهانی پاریس ساخته شد.
+                این برج توسط گوستاو ایفل، مهندس فرانسوی طراحی و ساخته شده است. در ابتدا، بسیاری از مردم پاریس با ساخت
+                این برج مخالف بودند، اما امروزه این بنا به یکی از محبوب‌ترین جاذبه‌های گردشگری جهان تبدیل شده است.
+              </p>
+              <p class="description-text">
+                برج ایفل دارای سه طبقه است که هر کدام منظره‌ای خیره‌کننده از شهر پاریس ارائه می‌دهند. طبقه اول در ارتفاع
+                ۵۷ متری، طبقه دوم در ارتفاع ۱۱۵ متری و طبقه سوم در ارتفاع ۲۷۶ متری قرار دارند. بازدیدکنندگان می‌توانند
+                با آسانسور یا پله به این طبقات دسترسی پیدا کنند.
+              </p>
+            </div>
+          </div>
+
+          <!-- Image Gallery -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">
+                <i class="icon-camera"></i>
+                گالری تصاویر
+              </h2>
+            </div>
+            <div class="card-content">
+              <div class="image-gallery">
+                <div *ngFor="let image of galleryImages; let i = index" class="gallery-item" (click)="onImageClick(i)">
+                  <img [src]="image" [alt]="'تصویر ' + (i + 1) + ' از ' + place.name" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Location Map -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">
+                <i class="icon-map-pin"></i>
+                موقعیت مکانی
+              </h2>
+            </div>
+            <div class="card-content">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.991626110954!2d2.2919063763056844!3d48.85837007133203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sEiffel%20Tower!5e0!3m2!1sen!2s!4v1748580398322!5m2!1sen!2s"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+
+          <!-- Reviews -->
+          <div class="card">
+            <div class="card-header">
+              <div class="reviews-header">
+                <h2 class="card-title">نظرات بازدیدکنندگان</h2>
+                <div class="overall-rating">
+                  <i class="icon-star filled"></i>
+                  <span class="rating-value">{{ place.rating }}</span>
+                  <span class="review-count">({{ place.reviewCount | number }} نظر)</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="reviews-list">
+                <div *ngFor="let review of reviews; let last = last" class="review-item" [class.last]="last">
+                  <div class="review-content">
+                    <div class="reviewer-avatar">
+                      {{ review.name.charAt(0) }}
+                    </div>
+                    <div class="review-details">
+                      <div class="review-header">
+                        <h4 class="reviewer-name">{{ review.name }}</h4>
+                        <span class="review-date">{{ review.date }}</span>
+                      </div>
+                      <div class="review-rating">
+                        <i *ngFor="let filled of getStarArray(review.rating)" class="icon-star"
+                          [class.filled]="filled"></i>
+                      </div>
+                      <p class="review-comment">{{ review.comment }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-outline full-width" (click)="onViewAllReviews()">
+                مشاهده همه نظرات
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="sidebar">
+          <!-- Quick Info -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">اطلاعات کلیدی</h3>
+            </div>
+            <div class="card-content">
+              <div class="info-list">
+                <div class="info-item">
+                  <i class="icon-clock"></i>
+                  <div class="info-content">
+                    <p class="info-label">ساعات بازدید</p>
+                    <p class="info-value">{{ quickInfo.hours }}</p>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="icon-dollar-sign"></i>
+                  <div class="info-content">
+                    <p class="info-label">قیمت ورودی</p>
+                    <p class="info-value">{{ quickInfo.price }}</p>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="icon-calendar"></i>
+                  <div class="info-content">
+                    <p class="info-label">بهترین زمان بازدید</p>
+                    <p class="info-value">{{ quickInfo.bestTime }}</p>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="icon-users"></i>
+                  <div class="info-content">
+                    <p class="info-label">مدت زمان بازدید</p>
+                    <p class="info-value">{{ quickInfo.duration }}</p>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="icon-phone"></i>
+                  <div class="info-content">
+                    <p class="info-label">تلفن</p>
+                    <p class="info-value">{{ quickInfo.phone }}</p>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="icon-globe"></i>
+                  <div class="info-content">
+                    <p class="info-label">وب‌سایت</p>
+                    <p class="info-value">{{ quickInfo.website }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book Tour -->
+          <!-- <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">رزرو تور</h3>
+            </div>
+            <div class="card-content">
+              <p class="booking-description">تور راهنمای {{ place.name }} را با بهترین قیمت رزرو کنید</p>
+              <div class="booking-actions">
+                <button class="btn btn-primary full-width large" (click)="onBookTour()">
+                  رزرو آنلاین
+                </button>
+                <button class="btn btn-outline full-width" (click)="onGetConsultation()">
+                  مشاوره رایگان
+                </button>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Nearby Places -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">جاهای دیدنی نزدیک</h3>
+            </div>
+            <div class="card-content">
+              <div class="nearby-places">
+                <div *ngFor="let place of nearbyPlaces" class="nearby-place">
+                  <img [src]="place.image" [alt]="place.name" class="nearby-image" />
+                  <div class="nearby-info">
+                    <h4 class="nearby-name">{{ place.name }}</h4>
+                    <div class="nearby-meta">
+                      <span class="nearby-distance">{{ place.distance }}</span>
+                      <div class="nearby-rating">
+                        <i class="icon-star filled"></i>
+                        <span>{{ place.rating }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-outline full-width" (click)="onViewAllNearbyPlaces()">
+                مشاهده همه
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
