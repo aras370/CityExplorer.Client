@@ -1,8 +1,25 @@
 {
 
-   "outputDirectory": "dist/city-explorer",
-
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  { "source": "/city-explorer/(.*)", "destination": "/city-explorer/index.html" }
+],
+
+  "builds": [
+    {
+      "src": "dist/city-explorer/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "headers": { "Cache-Control": "public, max-age=31536000, immutable" }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }
