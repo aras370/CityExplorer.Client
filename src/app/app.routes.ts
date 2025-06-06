@@ -12,12 +12,12 @@ import { AdminPanelComponent } from './pages/adminpanel/adminpanel.component';
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'PlaceDetail', component: PlaceDetailComponent },
-    {path:'Places',component:PlacesComponent},
-    {path:'Aboutus',component:AboutusComponent},
-    {path:'ContactUs',component:ContactUsComponent},
-    {path:'Login',component:LoginComponent},
-    {path:'Register',component:RegisterComponent},
-    {path:'addplacebyuser',component:AddPlaceByUserComponent},
-    {path:'adminpanel',component:AdminPanelComponent}
-
+    { path: 'Places', component: PlacesComponent },
+    { path: 'Aboutus', component: AboutusComponent },
+    { path: 'ContactUs', component: ContactUsComponent },
+    { path: 'Login', component: LoginComponent },
+    { path: 'Register', component: RegisterComponent },
+    { path: 'addplacebyuser', component: AddPlaceByUserComponent },
+    { path: 'adminpanel', component: AdminPanelComponent },
+    { path: '**', redirectTo: '' } // مهم!
 ];

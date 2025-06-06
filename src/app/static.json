@@ -1,0 +1,7 @@
+{
+  "root": "dist/city-explorer/browser",
+  "clean_urls": true,
+  "routes": {
+    "/**": "index.html"
+  }
+}

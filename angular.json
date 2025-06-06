@@ -14,9 +14,13 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "baseHref": "/",
+            
+            "deployUrl": "/",
             "outputPath": "dist/city-explorer/browser",
             "index": "src/index.html",
+            
             "browser": "src/main.ts",
+            
             "polyfills": [
               "zone.js"
             ],
