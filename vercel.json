@@ -2,8 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/city-explorer/browser/**/*",
-      "use": "@vercel/static"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/city-explorer/browser"
+      }
     }
   ],
   "routes": [
