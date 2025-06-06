@@ -16,7 +16,7 @@
             "baseHref": "/",
             
             "deployUrl": "/",
-            "outputPath": "dist/city-explorer/browser",
+            "outputPath": "dist/city-explorer",
             "index": "src/index.html",
             
             "browser": "src/main.ts",
