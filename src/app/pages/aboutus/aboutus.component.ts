@@ -67,7 +67,7 @@ export class AboutusComponent implements OnInit {
       name: ' سید امیر احسانی',
       position: 'توسعه دهنده،ایده پرداز و صاحب امتیاز',
       description: 'من امیر احسانی سازنده،طراح و برنامه نویس این نرم افزار هستم. در حال حاضر مهندس نرم افزار در ایران خودرو',
-      imageUrl: 'images/me3.jpg',
+      imageUrl: '/images/me3.jpg',
       socialLinks: {
         linkedin: '#',
         twitter: '#',
