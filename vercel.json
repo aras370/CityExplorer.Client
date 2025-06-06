@@ -1,6 +1,6 @@
 {
 
-   "outputPath": "dist/city-explorer",
+   "outputDirectory": "dist/city-explorer",
 
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
