@@ -34,7 +34,7 @@ export class PlaceDetailComponent {
     rating: 4.8,
     reviewCount: 12345,
     category: 'جاذبه تاریخی',
-    heroImage: '/images/efel.jpeg',
+    heroImage: '/images/efel.jpg',
   };
 
   quickInfo = {
