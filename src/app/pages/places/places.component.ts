@@ -37,7 +37,7 @@ export class PlacesComponent {
       id: 1,
       name: 'برج ایفل',
       description: 'برج ایفل یک برج آهنی ۳۳۰ متری است که در سال ۱۸۸۹ در پاریس، فرانسه ساخته شد. این برج به عنوان نماد فرانسه و یکی از شناخته‌شده‌ترین سازه‌های جهان شناخته می‌شود.',
-      imageUrl: 'https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=400&h=300&fit=crop',
+      imageUrl: '/images/efel.jpg',
       category: 'cultural',
       location: 'پاریس',
       country: 'فرانسه'
@@ -46,7 +46,7 @@ export class PlacesComponent {
       id: 2,
       name: 'تاج محل',
       description: 'تاج محل یک آرامگاه مرمری سفید در آگرا، هند است که توسط امپراتور مغول شاه جهان در سال ۱۶۳۲ به یاد همسر محبوبش ممتاز محل ساخته شد. این بنا یکی از شاهکارهای معماری مغول است.',
-      imageUrl: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=400&h=300&fit=crop',
+      imageUrl: '/images/TaajMahal.jpg',
       category: 'historical',
       location: 'آگرا',
       country: 'هند'
@@ -64,7 +64,7 @@ export class PlacesComponent {
       id: 4,
       name: 'آبشار نیاگارا',
       description: 'آبشار نیاگارا مجموعه‌ای از سه آبشار است که در مرز بین ایالات متحده و کانادا قرار دارد. این آبشارها به دلیل حجم زیاد آب و زیبایی خیره‌کننده، یکی از جاذبه‌های گردشگری محبوب جهان هستند.',
-      imageUrl: 'https://images.unsplash.com/photo-1489447068241-b3490214e879?w=400&h=300&fit=crop',
+      imageUrl: '/images/niiagara.jpg',
       category: 'natural',
       location: 'مرز آمریکا و کانادا',
       country: 'آمریکا/کانادا'
@@ -100,7 +100,7 @@ export class PlacesComponent {
       id: 8,
       name: 'پارک ملی یلوستون',
       description: 'پارک ملی یلوستون اولین پارک ملی در جهان است که در سال ۱۸۷۲ تاسیس شد. این پارک به خاطر چشمه‌های آب گرم، آبفشان‌ها، دره‌های عمیق و حیات وحش متنوع خود مشهور است.',
-      imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
+      imageUrl: '/images/yelostone/jpg',
       category: 'natural',
       location: 'وایومینگ',
       country: 'آمریکا'
@@ -118,7 +118,7 @@ export class PlacesComponent {
       id: 10,
       name: 'دیوار بزرگ چین',
       description: 'دیوار بزرگ چین یک سازه دفاعی باستانی است که برای محافظت از امپراتوری چین در برابر حملات اقوام شمالی ساخته شده است. این دیوار با طول بیش از ۲۱,۰۰۰ کیلومتر، بزرگترین سازه ساخته شده توسط انسان است.',
-      imageUrl: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=400&h=300&fit=crop',
+      imageUrl: '/images/wall.jpg',
       category: 'historical',
       location: 'پکن',
       country: 'چین'
@@ -127,7 +127,7 @@ export class PlacesComponent {
       id: 11,
       name: 'مکه مکرمه',
       description: 'مکه مکرمه مقدس‌ترین شهر در اسلام است که در عربستان سعودی قرار دارد. کعبه، قبله مسلمانان، در مرکز مسجدالحرام در این شهر واقع شده است و سالانه میلیون‌ها مسلمان برای انجام مناسک حج به این شهر سفر می‌کنند.',
-      imageUrl: 'https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=400&h=300&fit=crop',
+      imageUrl: '/images/makkeh.jpg',
       category: 'religious',
       location: 'مکه',
       country: 'عربستان سعودی'
@@ -136,7 +136,7 @@ export class PlacesComponent {
       id: 12,
       name: 'جزایر مالدیو',
       description: 'جزایر مالدیو مجموعه‌ای از جزایر استوایی در اقیانوس هند هستند که به خاطر سواحل شنی سفید، آب‌های فیروزه‌ای و صخره‌های مرجانی رنگارنگ مشهور هستند. این جزایر یکی از محبوب‌ترین مقاصد گردشگری لوکس در جهان هستند.',
-      imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
+      imageUrl: '/images/maldive.jpg',
       category: 'recreational',
       location: 'اقیانوس هند',
       country: 'مالدیو'
