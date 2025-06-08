@@ -100,7 +100,7 @@ export class PlacesComponent {
       id: 8,
       name: 'پارک ملی یلوستون',
       description: 'پارک ملی یلوستون اولین پارک ملی در جهان است که در سال ۱۸۷۲ تاسیس شد. این پارک به خاطر چشمه‌های آب گرم، آبفشان‌ها، دره‌های عمیق و حیات وحش متنوع خود مشهور است.',
-      imageUrl: '/images/yelostone/jpg',
+      imageUrl: '/images/yelostone.jpg',
       category: 'natural',
       location: 'وایومینگ',
       country: 'آمریکا'
