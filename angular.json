@@ -27,7 +27,7 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
-                "glob": "**/*",
+               "glob": "**/*.{jpg,jpeg,png,gif,svg}",
                 "input": "public",
                  "output": ""
               }
