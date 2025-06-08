@@ -1,147 +1,139 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, type OnInit } from "@angular/core"
+import { CommonModule } from "@angular/common"
 
+
+interface Place {
+  name: string
+  location: string
+  heroImage: string
+  rating: number
+  reviewCount: number
+  category: string
+}
 
 interface Review {
-  name: string;
-  rating: number;
-  date: string;
-  comment: string;
+  name: string
+  date: string
+  rating: number
+  comment: string
+}
+
+interface QuickInfo {
+  hours: string
+  price: string
+  bestTime: string
+  duration: string
+  phone: string
+  website: string
 }
 
 interface NearbyPlace {
-  name: string;
-  distance: string;
-  rating: string;
-  image: string;
+  name: string
+  image: string
+  distance: string
+  rating: number
 }
 
 @Component({
-  selector: 'app-place-detail',
-  imports: [CommonModule],
-  templateUrl: './place-detail.component.html',
-  styleUrl: './place-detail.component.css'
+  selector: "app-place-details",
+  templateUrl: "./place-detail.component.html",
+  imports:[CommonModule],
+  styleUrls: ["./place-detail.component.css"],
 })
-
-
-
-export class PlaceDetailComponent {
-
-
- place = {
-    name: 'برج ایفل',
-    location: 'پاریس، فرانسه',
+export class PlaceDetailComponent implements OnInit {
+  place: Place = {
+    name: "برج ایفل",
+    location: "پاریس، فرانسه",
+    heroImage: "/images/efel.jpg",
     rating: 4.8,
-    reviewCount: 12345,
-    category: 'جاذبه تاریخی',
-    heroImage: '/images/efel.jpg',
-  };
+    reviewCount: 15420,
+    category: "جاذبه تاریخی",
+  }
 
-  quickInfo = {
-    hours: '۹:۳۰ - ۲۳:۴۵',
-    price: '۲۹.۴ یورو (بزرگسالان)',
-    bestTime: 'اردیبهشت تا شهریور',
-    duration: '۲-۳ ساعت',
-    phone: '+33 8 92 70 12 39',
-    website: 'toureiffel.paris'
-  };
-
-  galleryImages = [
-    '/assets/images/eiffel-1.jpg',
-    '/assets/images/eiffel-2.jpg',
-    '/assets/images/eiffel-3.jpg',
-    '/assets/images/eiffel-4.jpg',
-    '/assets/images/eiffel-5.jpg',
-    '/assets/images/eiffel-6.jpg'
-  ];
+  galleryImages: string[] = [
+    "/placeholder.svg?height=200&width=200",
+    "/placeholder.svg?height=200&width=200",
+    "/placeholder.svg?height=200&width=200",
+    "/placeholder.svg?height=200&width=200",
+    "/placeholder.svg?height=200&width=200",
+    "/placeholder.svg?height=200&width=200",
+  ]
 
   reviews: Review[] = [
     {
-      name: 'علی احمدی',
+      name: "علی احمدی",
+      date: "۲ روز پیش",
       rating: 5,
-      date: '۲ روز پیش',
-      comment: 'تجربه‌ای فوق‌العاده! منظره از بالای برج واقعاً خیره‌کننده است. حتماً در زمان غروب بروید.'
+      comment: "تجربه فوق‌العاده‌ای بود! منظره از بالای برج واقعاً خیره‌کننده است.",
     },
     {
-      name: 'فاطمه رضایی',
-      rating: 5,
-      date: '۱ هفته پیش',
-      comment: 'یکی از بهترین جاذبه‌های پاریس. پیشنهاد می‌کنم بلیت را از قبل رزرو کنید تا در صف نمانید.'
-    },
-    {
-      name: 'محمد کریمی',
+      name: "مریم رضایی",
+      date: "۱ هفته پیش",
       rating: 4,
-      date: '۲ هفته پیش',
-      comment: 'برج زیبایی است اما خیلی شلوغ بود. بهتر است در ساعات اولیه صبح بروید.'
-    }
-  ];
+      comment: "جای دیدنی عالی، اما در ساعات شلوغ بهتر است از قبل بلیط تهیه کنید.",
+    },
+    {
+      name: "حسن محمدی",
+      date: "۲ هفته پیش",
+      rating: 5,
+      comment: "یکی از بهترین تجربه‌های سفرم به پاریس. حتماً در شب هم ببینید.",
+    },
+  ]
+
+  quickInfo: QuickInfo = {
+    hours: "۹:۳۰ - ۲۳:۴۵",
+    price: "۲۹ یورو",
+    bestTime: "بهار و پاییز",
+    duration: "۲-۳ ساعت",
+    phone: "+33 8 92 70 12 39",
+    website: "www.toureiffel.paris",
+  }
 
   nearbyPlaces: NearbyPlace[] = [
     {
-      name: 'موزه لوور',
-      distance: '۲.۵ کیلومتر',
-      rating: '4.7',
-      image: '/assets/images/louvre.jpg'
+      name: "موزه لوور",
+      image: "/images/luvr.jpg",
+      distance: "۲.۵ کیلومتر",
+      rating: 4.7,
     },
     {
-      name: 'کلیسای نوتردام',
-      distance: '۳.۱ کیلومتر',
-      rating: '4.6',
-      image: 'images/noterdam.jpeg'
+      name: "کلیسای نوتردام",
+      image: "/images/noterdam.jpg",
+      distance: "۳.۱ کیلومتر",
+      rating: 4.6,
     },
     {
-      name: 'قوس پیروزی',
-      distance: '۲.۸ کیلومتر',
-      rating: '4.5',
-      image: '/assets/images/arc-triomphe.jpg'
+      name: "قوس پیروزی",
+      image: "/images/victory.jpg",
+      distance: "۱.۸ کیلومتر",
+      rating: 4.5,
     },
-    {
-      name: 'خیابان شانزلیزه',
-      distance: '۲.۲ کیلومتر',
-      rating: '4.4',
-      image: '/assets/images/champs-elysees.jpg'
-    }
-  ];
+  ]
 
-  getStarArray(rating: number): boolean[] {
-    return Array(5).fill(false).map((_, i) => i < rating);
-  }
+  constructor() {}
 
-  onBookTour(): void {
-    // Implement booking logic
-    console.log('رزرو تور');
-  }
+  ngOnInit(): void {}
 
-  onGetConsultation(): void {
-    // Implement consultation logic
-    console.log('مشاوره رایگان');
-  }
-
-  onSharePlace(): void {
-    // Implement sharing logic
-    console.log('اشتراک‌گذاری مکان');
-  }
-
-  onSavePlace(): void {
-    // Implement save to favorites logic
-    console.log('ذخیره مکان');
+  onImageClick(index: number): void {
+    // پیاده‌سازی نمایش تصویر در مودال
+    console.log("Image clicked:", index)
   }
 
   onViewAllReviews(): void {
-    // Navigate to all reviews page
-    console.log('مشاهده همه نظرات');
+    // پیاده‌سازی نمایش همه نظرات
+    console.log("View all reviews clicked")
   }
 
   onViewAllNearbyPlaces(): void {
-    // Navigate to nearby places page
-    console.log('مشاهده همه مکان‌های نزدیک');
+    // پیاده‌سازی نمایش همه مکان‌های نزدیک
+    console.log("View all nearby places clicked")
   }
 
-  onImageClick(index: number): void {
-    // Open image in lightbox/modal
-    console.log('نمایش تصویر', index);
+  getStarArray(rating: number): boolean[] {
+    const stars = []
+    for (let i = 1; i <= 5; i++) {
+      stars.push(i <= rating)
+    }
+    return stars
   }
-
-
-
 }

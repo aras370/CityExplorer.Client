@@ -5,11 +5,13 @@
       <div class="flex justify-between items-center h-16 sm:h-20">
         <!-- Logo -->
         <div class="flex items-center space-x-2 sm:space-x-3 space-x-reverse">
-          <div class="w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg">
+          <div
+            class="w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg">
             <i class="fas fa-globe text-white text-sm sm:text-xl"></i>
           </div>
           <div>
-            <h1 class="text-lg sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1
+              class="text-lg sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               جهان نما
             </h1>
             <p class="text-xs text-gray-500 hidden sm:block">کاوشگر شهرها</p>
@@ -18,19 +20,48 @@
 
         <!-- Desktop Navigation -->
         <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 space-x-reverse">
-          <a href="/" class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">صفحه اصلی</a>
-          <a href="/adminpanel" class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">پنل ادمین</a>
-          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">راهنما</a>
-          <a routerLink="/aboutus" class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">درباره ما</a>
-          <a routerLink="/contactus" class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">تماس با ما</a>
-          <a routerLink="/addplacebyuser" class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base whitespace-nowrap">افزودن مکان</a>
+          <a href="/" class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">صفحه
+            اصلی</a>
+          <a href="/adminpanel"
+            class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">پنل ادمین</a>
+          <a href="#"
+            class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">راهنما</a>
+          <a routerLink="/aboutus"
+            class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">درباره ما</a>
+          <a routerLink="/contactus"
+            class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">تماس با ما</a>
+          <a routerLink="/addplacebyuser"
+            class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base whitespace-nowrap">افزودن
+            مکان</a>
         </nav>
 
         <!-- Mobile Menu Button -->
-        <button class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" (click)="toggleMenu()">
-          <i *ngIf="!isMenuOpen" class="fas fa-bars text-lg sm:text-xl"></i>
-          <i *ngIf="isMenuOpen" class="fas fa-times text-lg sm:text-xl"></i>
-        </button>
+       <button
+  class="lg:hidden flex flex-col justify-center gap-[4px] px-2.5 py-1.5 border border-gray-300 rounded-md bg-white hover:bg-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 transition-all"
+  (click)="toggleMenu()"
+>
+  <span
+    [class]="
+      'w-5 h-0.5 bg-gray-800 dark:bg-white transition-transform duration-300'
+      + (isMenuOpen ? ' rotate-45 translate-y-[5px]' : '')
+    "
+  ></span>
+  <span
+    [class]="
+      'w-5 h-0.5 bg-gray-800 dark:bg-white transition-opacity duration-300'
+      + (isMenuOpen ? ' opacity-0' : '')
+    "
+  ></span>
+  <span
+    [class]="
+      'w-5 h-0.5 bg-gray-800 dark:bg-white transition-transform duration-300'
+      + (isMenuOpen ? ' -rotate-45 -translate-y-[5px]' : '')
+    "
+  ></span>
+</button>
+
+
+
       </div>
     </div>
 
@@ -41,9 +72,12 @@
         <a href="/" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">صفحه اصلی</a>
         <a href="/adminpanel" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">پنل ادمین</a>
         <a href="#" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">راهنما</a>
-        <a routerLink="/aboutus" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">درباره ما</a>
-        <a routerLink="/contactus" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">تماس با ما</a>
-        <a routerLink="/addplacebyuser" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">افزودن مکان به جهان نما</a>
+        <a routerLink="/aboutus" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">درباره
+          ما</a>
+        <a routerLink="/contactus" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">تماس با
+          ما</a>
+        <a routerLink="/addplacebyuser"
+          class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">افزودن مکان به جهان نما</a>
       </div>
     </div>
   </header>
@@ -59,12 +93,14 @@
     <div class="max-w-7xl mx-auto relative z-10">
       <div class="text-center transition-all duration-1000"
         [ngClass]="{'opacity-100 translate-y-0': isVisible, 'opacity-0 translate-y-10': !isVisible}">
-        <div class="mb-4 sm:mb-6 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 border border-blue-200 px-3 sm:px-4 py-2 text-xs sm:text-sm inline-flex items-center rounded-full">
+        <div
+          class="mb-4 sm:mb-6 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 border border-blue-200 px-3 sm:px-4 py-2 text-xs sm:text-sm inline-flex items-center rounded-full">
           <i class="fas fa-trending-up ml-1 sm:ml-2"></i>
           بیش از ۲۰۰ جاذبه گردشگری
         </div>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 sm:mb-8 leading-tight text-white">
+        <h1
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 sm:mb-8 leading-tight text-white">
           <span class="bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
             کشف جهان
           </span>
@@ -72,7 +108,8 @@
           <span class="text-white">با جهان نما</span>
         </h1>
 
-        <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 mb-8 sm:mb-10 lg:mb-12 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed px-4">
+        <p
+          class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 mb-8 sm:mb-10 lg:mb-12 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed px-4">
           سفری به شگفت‌انگیزترین جاذبه‌های گردشگری جهان و آشنایی با فرهنگ‌ها، تاریخ و زیبایی‌های بی‌نظیر
         </p>
 
@@ -86,9 +123,11 @@
         </div>
 
         <!-- Stats -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto">
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto">
           <div *ngFor="let stat of stats" class="text-center">
-            <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl sm:rounded-2xl mb-2 sm:mb-4 shadow-lg">
+            <div
+              class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl sm:rounded-2xl mb-2 sm:mb-4 shadow-lg">
               <i [class]="stat.icon + ' text-blue-600 text-base sm:text-lg lg:text-xl'"></i>
             </div>
             <div class="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1 sm:mb-2">{{stat.number}}</div>
@@ -104,7 +143,8 @@
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4">
         <button *ngFor="let category of categories" (click)="selectCategory(category)"
-          class="px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-300 flex items-center text-sm sm:text-base" [ngClass]="{
+          class="px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-300 flex items-center text-sm sm:text-base"
+          [ngClass]="{
             'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg': category.active,
             'border-2 border-gray-200 text-gray-700 hover:border-blue-300 hover:text-blue-600': !category.active
           }">
@@ -141,13 +181,15 @@
 
             <!-- Category Badge -->
             <div class="absolute top-3 sm:top-4 right-3 sm:right-4">
-              <span class="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
+              <span
+                class="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
                 {{attraction.category}}
               </span>
             </div>
 
             <!-- Action Buttons -->
-            <div class="absolute top-3 sm:top-4 left-3 sm:left-4 flex space-x-1 sm:space-x-2 space-x-reverse opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div
+              class="absolute top-3 sm:top-4 left-3 sm:left-4 flex space-x-1 sm:space-x-2 space-x-reverse opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <button (click)="likeAttraction(attraction)"
                 class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-1.5 sm:p-2 rounded-full border-0">
                 <i class="fas fa-heart text-xs sm:text-sm"></i>
@@ -192,7 +234,7 @@
               </div>
 
               <!-- View Details Button -->
-              <a routerLink="/placeDetail" 
+              <a routerLink="/placeDetail"
                 class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-2.5 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-300 hover:shadow-lg flex items-center justify-center text-sm sm:text-base">
                 <i class="fas fa-camera ml-1 sm:ml-2"></i>
                 مشاهده جزئیات
@@ -211,7 +253,8 @@
         <!-- Logo and Description -->
         <div class="sm:col-span-2 lg:col-span-2">
           <div class="flex items-center space-x-2 sm:space-x-3 space-x-reverse mb-4 sm:mb-6">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg sm:rounded-xl flex items-center justify-center">
+            <div
+              class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg sm:rounded-xl flex items-center justify-center">
               <i class="fas fa-globe text-white text-lg sm:text-xl"></i>
             </div>
             <div>
@@ -246,7 +289,8 @@
         </div>
       </div>
 
-      <div class="border-t border-gray-700 mt-8 sm:mt-10 lg:mt-12 pt-6 sm:pt-8 text-center text-gray-400 text-sm sm:text-base">
+      <div
+        class="border-t border-gray-700 mt-8 sm:mt-10 lg:mt-12 pt-6 sm:pt-8 text-center text-gray-400 text-sm sm:text-base">
         <p>&copy; ۱۴۰۳ جهان نما. تمامی حقوق محفوظ است.</p>
       </div>
     </div>
