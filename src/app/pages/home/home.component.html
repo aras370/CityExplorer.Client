@@ -2,67 +2,54 @@
   <!-- Header -->
   <header class="fixed top-0 w-full bg-white/95 backdrop-blur-lg z-50 border-b border-blue-100 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
+      <div class="flex justify-between items-center h-16 sm:h-20">
         <!-- Logo -->
-        <div class="flex items-center space-x-3 space-x-reverse">
-          <div
-            class="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-            <i class="fas fa-globe text-white text-xl"></i>
+        <div class="flex items-center space-x-2 sm:space-x-3 space-x-reverse">
+          <div class="w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg">
+            <i class="fas fa-globe text-white text-sm sm:text-xl"></i>
           </div>
           <div>
-            <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 class="text-lg sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               جهان نما
             </h1>
-            <p class="text-xs text-gray-500">کاوشگر شهرها</p>
+            <p class="text-xs text-gray-500 hidden sm:block">کاوشگر شهرها</p>
           </div>
         </div>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center space-x-8 space-x-reverse">
-          <a href="/" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">صفحه اصلی</a>
-          <a href="/adminpanel" class="text-gray-700 hover:text-blue-600 font-medium transition-colors"> پنل ادمین</a>
-          <!-- <a href="#" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">جاذبه‌ها</a>
-          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">شهرها</a> -->
-          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">راهنما</a>
-          <a routerLink="/aboutus" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">درباره ما</a>
-          <a routerLink="/contactus" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">تماس با ما</a>
-          <a routerLink="/addplacebyuser" class="text-gray-700 hover:text-blue-600 font-medium transition-colors"> افزودن مکان به جهان نما</a>
+        <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 space-x-reverse">
+          <a href="/" class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">صفحه اصلی</a>
+          <a href="/adminpanel" class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">پنل ادمین</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">راهنما</a>
+          <a routerLink="/aboutus" class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">درباره ما</a>
+          <a routerLink="/contactus" class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">تماس با ما</a>
+          <a routerLink="/addplacebyuser" class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base whitespace-nowrap">افزودن مکان</a>
         </nav>
-
-        <!-- CTA Button -->
-        <!-- <div class="hidden lg:block">
-          <button class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-            شروع کاوش
-          </button>
-        </div> -->
 
         <!-- Mobile Menu Button -->
         <button class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" (click)="toggleMenu()">
-          <i *ngIf="!isMenuOpen" class="fas fa-bars text-xl"></i>
-          <i *ngIf="isMenuOpen" class="fas fa-times text-xl"></i>
+          <i *ngIf="!isMenuOpen" class="fas fa-bars text-lg sm:text-xl"></i>
+          <i *ngIf="isMenuOpen" class="fas fa-times text-lg sm:text-xl"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobile Menu -->
     <div class="lg:hidden bg-white border-t border-gray-200 transition-all duration-300"
-      [ngClass]="{'max-h-96 opacity-100': isMenuOpen, 'max-h-0 opacity-0 overflow-hidden': !isMenuOpen}">
-      <div class="px-4 py-4 space-y-4">
-        <a href="#" class="block text-gray-700 hover:text-blue-600 font-medium py-2">صفحه اصلی</a>
-        <a href="#" class="block text-gray-700 hover:text-blue-600 font-medium py-2">جاذبه‌ها</a>
-        <a href="#" class="block text-gray-700 hover:text-blue-600 font-medium py-2">شهرها</a>
-        <a href="#" class="block text-gray-700 hover:text-blue-600 font-medium py-2">راهنما</a>
-        <a href="#" class="block text-gray-700 hover:text-blue-600 font-medium py-2">درباره ما</a>
-        <button
-          class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-2 rounded-xl">
-          شروع کاوش
-        </button>
+      [ngClass]="{'max-h-screen opacity-100': isMenuOpen, 'max-h-0 opacity-0 overflow-hidden': !isMenuOpen}">
+      <div class="px-4 py-4 space-y-3">
+        <a href="/" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">صفحه اصلی</a>
+        <a href="/adminpanel" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">پنل ادمین</a>
+        <a href="#" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">راهنما</a>
+        <a routerLink="/aboutus" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">درباره ما</a>
+        <a routerLink="/contactus" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">تماس با ما</a>
+        <a routerLink="/addplacebyuser" class="block text-gray-700 hover:text-blue-600 font-medium py-2 text-base">افزودن مکان به جهان نما</a>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+  <section class="relative pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8">
     <!-- Background Image -->
     <div class="absolute inset-0 z-0 overflow-hidden">
       <img src="/images/efel.jpg" alt="جاذبه‌های گردشگری جهان" class="w-full h-full object-cover" />
@@ -72,13 +59,12 @@
     <div class="max-w-7xl mx-auto relative z-10">
       <div class="text-center transition-all duration-1000"
         [ngClass]="{'opacity-100 translate-y-0': isVisible, 'opacity-0 translate-y-10': !isVisible}">
-        <div
-          class="mb-6 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 border border-blue-200 px-4 py-2 text-sm inline-flex items-center rounded-full">
-          <i class="fas fa-trending-up ml-2"></i>
+        <div class="mb-4 sm:mb-6 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 border border-blue-200 px-3 sm:px-4 py-2 text-xs sm:text-sm inline-flex items-center rounded-full">
+          <i class="fas fa-trending-up ml-1 sm:ml-2"></i>
           بیش از ۲۰۰ جاذبه گردشگری
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight text-white">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 sm:mb-8 leading-tight text-white">
           <span class="bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
             کشف جهان
           </span>
@@ -86,28 +72,27 @@
           <span class="text-white">با جهان نما</span>
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed">
+        <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 mb-8 sm:mb-10 lg:mb-12 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed px-4">
           سفری به شگفت‌انگیزترین جاذبه‌های گردشگری جهان و آشنایی با فرهنگ‌ها، تاریخ و زیبایی‌های بی‌نظیر
         </p>
 
         <!-- Adventure Button -->
-        <div class="flex justify-center">
+        <div class="flex justify-center mb-8 sm:mb-12 lg:mb-16">
           <a routerLink="/places"
-            class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-8 rounded-xl text-xl font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center">
+            class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 rounded-xl text-base sm:text-lg lg:text-xl font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center">
             شروع ماجراجویی
-            <i class="fas fa-globe ml-3 animate-pulse"></i>
+            <i class="fas fa-globe mr-2 sm:mr-3 animate-pulse"></i>
           </a>
         </div>
 
         <!-- Stats -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mt-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto">
           <div *ngFor="let stat of stats" class="text-center">
-            <div
-              class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl mb-4 shadow-lg">
-              <i [class]="stat.icon + ' text-blue-600 text-xl'"></i>
+            <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl sm:rounded-2xl mb-2 sm:mb-4 shadow-lg">
+              <i [class]="stat.icon + ' text-blue-600 text-base sm:text-lg lg:text-xl'"></i>
             </div>
-            <div class="text-3xl font-bold text-white mb-2">{{stat.number}}</div>
-            <div class="text-sm text-gray-300">{{stat.label}}</div>
+            <div class="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1 sm:mb-2">{{stat.number}}</div>
+            <div class="text-xs sm:text-sm text-gray-300">{{stat.label}}</div>
           </div>
         </div>
       </div>
@@ -115,16 +100,16 @@
   </section>
 
   <!-- Categories -->
-  <section class="py-12 px-4 sm:px-6 lg:px-8 bg-white/50">
+  <section class="py-8 sm:py-10 lg:py-12 px-4 sm:px-6 lg:px-8 bg-white/50">
     <div class="max-w-7xl mx-auto">
-      <div class="flex flex-wrap justify-center gap-4">
+      <div class="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4">
         <button *ngFor="let category of categories" (click)="selectCategory(category)"
-          class="px-6 py-3 rounded-xl transition-all duration-300 flex items-center" [ngClass]="{
+          class="px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-300 flex items-center text-sm sm:text-base" [ngClass]="{
             'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg': category.active,
             'border-2 border-gray-200 text-gray-700 hover:border-blue-300 hover:text-blue-600': !category.active
           }">
           {{category.name}}
-          <span class="mr-2 px-2 py-1 rounded-full text-xs" [ngClass]="{
+          <span class="mr-1 sm:mr-2 px-1 sm:px-2 py-1 rounded-full text-xs" [ngClass]="{
               'bg-white/20 text-white': category.active,
               'bg-gray-100 text-gray-600': !category.active
             }">
@@ -136,130 +121,113 @@
   </section>
 
   <!-- Popular Attractions -->
-  <section class="py-20 px-4 sm:px-6 lg:px-8">
+  <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+      <div class="text-center mb-8 sm:mb-12 lg:mb-16">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
           <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             محبوب ترین ها
           </span>
         </h2>
-        <!-- <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          کشف محبوب‌ترین و زیباترین جاذبه‌های گردشگری جهان که میلیون‌ها نفر را مجذوب خود کرده‌اند
-        </p> -->
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         <div *ngFor="let attraction of popularAttractions"
-          class="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-0 bg-white hover:scale-105 rounded-2xl">
+          class="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-0 bg-white hover:scale-105 rounded-xl sm:rounded-2xl">
           <div class="relative">
             <img [src]="attraction.image" [alt]="attraction.name"
-              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700" />
+              class="w-full h-48 sm:h-56 lg:h-64 object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
             <!-- Category Badge -->
-            <div class="absolute top-4 right-4">
-              <span
-                class="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 px-3 py-1 rounded-full text-sm">
+            <div class="absolute top-3 sm:top-4 right-3 sm:right-4">
+              <span class="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
                 {{attraction.category}}
               </span>
             </div>
 
             <!-- Action Buttons -->
-            <div
-              class="absolute top-4 left-4 flex space-x-2 space-x-reverse opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute top-3 sm:top-4 left-3 sm:left-4 flex space-x-1 sm:space-x-2 space-x-reverse opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <button (click)="likeAttraction(attraction)"
-                class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-2 rounded-full border-0">
-                <i class="fas fa-heart"></i>
+                class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-1.5 sm:p-2 rounded-full border-0">
+                <i class="fas fa-heart text-xs sm:text-sm"></i>
               </button>
               <button (click)="shareAttraction(attraction)"
-                class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-2 rounded-full border-0">
-                <i class="fas fa-share-alt"></i>
+                class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-1.5 sm:p-2 rounded-full border-0">
+                <i class="fas fa-share-alt text-xs sm:text-sm"></i>
               </button>
             </div>
 
             <!-- Title Overlay -->
-            <div class="absolute bottom-4 right-4 left-4">
-              <h3 class="text-2xl font-bold text-white mb-1">{{attraction.name}}</h3>
-              <p class="text-gray-200 text-sm flex items-center">
+            <div class="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 left-3 sm:left-4">
+              <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-1">{{attraction.name}}</h3>
+              <p class="text-gray-200 text-xs sm:text-sm flex items-center">
                 <i class="fas fa-map-marker-alt ml-1"></i>
                 {{attraction.city}}, {{attraction.country}}
               </p>
             </div>
           </div>
 
-          <div class="p-6">
-            <p class="text-gray-600 mb-4 leading-relaxed">{{attraction.description}}</p>
+          <div class="p-4 sm:p-5 lg:p-6">
+            <p class="text-gray-600 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">{{attraction.description}}</p>
 
-            <div class="space-y-4">
+            <div class="space-y-3 sm:space-y-4">
               <!-- Rating and Visitors -->
               <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-1 space-x-reverse">
-                  <i class="fas fa-star text-yellow-500"></i>
-                  <span class="font-semibold text-gray-800">{{attraction.rating}}</span>
-                  <span class="text-gray-500 text-sm">(امتیاز)</span>
+                  <i class="fas fa-star text-yellow-500 text-sm"></i>
+                  <span class="font-semibold text-gray-800 text-sm sm:text-base">{{attraction.rating}}</span>
+                  <span class="text-gray-500 text-xs sm:text-sm">(امتیاز)</span>
                 </div>
                 <div class="flex items-center space-x-1 space-x-reverse text-gray-500">
-                  <i class="fas fa-users"></i>
-                  <span class="text-sm">{{attraction.visitors}} بازدید</span>
+                  <i class="fas fa-users text-xs sm:text-sm"></i>
+                  <span class="text-xs sm:text-sm">{{attraction.visitors}} بازدید</span>
                 </div>
               </div>
 
               <!-- Best Time -->
               <div class="flex items-center space-x-2 space-x-reverse text-gray-600">
-                <i class="fas fa-clock"></i>
-                <span class="text-sm">بهترین زمان: {{attraction.bestTime}}</span>
+                <i class="fas fa-clock text-xs sm:text-sm"></i>
+                <span class="text-xs sm:text-sm">بهترین زمان: {{attraction.bestTime}}</span>
               </div>
 
               <!-- View Details Button -->
               <a routerLink="/placeDetail" 
-                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 rounded-xl transition-all duration-300 hover:shadow-lg flex items-center justify-center">
-                <i class="fas fa-camera ml-2"></i>
+                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-2.5 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-300 hover:shadow-lg flex items-center justify-center text-sm sm:text-base">
+                <i class="fas fa-camera ml-1 sm:ml-2"></i>
                 مشاهده جزئیات
-            </a>
+              </a>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Load More Button -->
-      <!-- <div class="text-center mt-16">
-        <button
-          class="border-2 border-blue-300 text-blue-600 hover:bg-blue-50 px-12 py-4 rounded-xl transition-all duration-300 hover:scale-105 flex items-center mx-auto">
-          مشاهده بیشتر
-          <i class="fas fa-trending-up mr-3"></i>
-        </button>
-      </div> -->
-
-
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 text-white py-16">
+  <footer class="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 text-white py-12 sm:py-14 lg:py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         <!-- Logo and Description -->
-        <div class="md:col-span-2">
-          <div class="flex items-center space-x-3 space-x-reverse mb-6">
-            <div
-              class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
-              <i class="fas fa-globe text-white text-xl"></i>
+        <div class="sm:col-span-2 lg:col-span-2">
+          <div class="flex items-center space-x-2 sm:space-x-3 space-x-reverse mb-4 sm:mb-6">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg sm:rounded-xl flex items-center justify-center">
+              <i class="fas fa-globe text-white text-lg sm:text-xl"></i>
             </div>
             <div>
-              <h3 class="text-2xl font-bold text-white">جهان نما</h3>
+              <h3 class="text-xl sm:text-2xl font-bold text-white">جهان نما</h3>
               <p class="text-xs text-gray-300">کاوشگر دنیا</p>
             </div>
           </div>
-          <p class="text-gray-300 leading-relaxed max-w-md">
+          <p class="text-gray-300 leading-relaxed max-w-md text-sm sm:text-base">
             پلتفرمی جامع برای کشف و آشنایی با زیباترین جاذبه‌های گردشگری جهان. با ما سفری فراموش‌نشدنی را تجربه کنید.
           </p>
         </div>
 
         <!-- Quick Links -->
         <div>
-          <h4 class="text-lg font-semibold mb-4 text-white">دسترسی سریع</h4>
-          <ul class="space-y-2 text-gray-300">
+          <h4 class="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white">دسترسی سریع</h4>
+          <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
             <li><a href="#" class="hover:text-white transition-colors">جاذبه‌های محبوب</a></li>
             <li><a href="#" class="hover:text-white transition-colors">شهرهای برتر</a></li>
             <li><a href="#" class="hover:text-white transition-colors">راهنمای سفر</a></li>
@@ -269,17 +237,16 @@
 
         <!-- Contact -->
         <div>
-          <h4 class="text-lg font-semibold mb-4 text-white">تماس با ما</h4>
-          <ul class="space-y-2 text-gray-300">
+          <h4 class="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white">تماس با ما</h4>
+          <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
             <li>پشتیبانی ۲۴ ساعته</li>
-            <li>ایمیل: hesamehsani72yahoo.com</li>
+            <li class="break-all">ایمیل: hesamehsani72yahoo.com</li>
             <li>تلفن: 09157898148</li>
-          
           </ul>
         </div>
       </div>
 
-      <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+      <div class="border-t border-gray-700 mt-8 sm:mt-10 lg:mt-12 pt-6 sm:pt-8 text-center text-gray-400 text-sm sm:text-base">
         <p>&copy; ۱۴۰۳ جهان نما. تمامی حقوق محفوظ است.</p>
       </div>
     </div>
