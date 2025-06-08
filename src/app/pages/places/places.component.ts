@@ -55,7 +55,7 @@ export class PlacesComponent {
       id: 3,
       name: 'مسجد الاقصی',
       description: 'مسجد الاقصی یکی از مقدس‌ترین مکان‌های اسلامی است که در شهر قدیمی بیت‌المقدس قرار دارد. این مسجد سومین مکان مقدس در اسلام پس از مسجدالحرام و مسجدالنبی است.',
-      imageUrl: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop',
+      imageUrl: '/images/masjed.jpg',
       category: 'religious',
       location: 'بیت‌المقدس',
       country: 'فلسطین'
@@ -73,7 +73,7 @@ export class PlacesComponent {
       id: 5,
       name: 'دیزنی‌لند توکیو',
       description: 'دیزنی‌لند توکیو اولین پارک دیزنی خارج از ایالات متحده است که در سال ۱۹۸۳ افتتاح شد. این پارک تفریحی با الهام از داستان‌های والت دیزنی، سالانه میلیون‌ها بازدیدکننده را به خود جذب می‌کند.',
-      imageUrl: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop',
+      imageUrl: '/images/diseny.jpg',
       category: 'recreational',
       location: 'توکیو',
       country: 'ژاپن'
@@ -82,7 +82,7 @@ export class PlacesComponent {
       id: 6,
       name: 'کلیسای جامع نوتردام',
       description: 'کلیسای جامع نوتردام یکی از بزرگترین و مشهورترین کلیساهای کاتولیک در جهان است که در پاریس، فرانسه قرار دارد. این کلیسا نمونه‌ای عالی از معماری گوتیک فرانسوی است.',
-      imageUrl: 'https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=400&h=300&fit=crop',
+      imageUrl: '/images/noterdam.jpg',
       category: 'religious',
       location: 'پاریس',
       country: 'فرانسه'
@@ -91,7 +91,7 @@ export class PlacesComponent {
       id: 7,
       name: 'اهرام جیزه',
       description: 'اهرام جیزه مجموعه‌ای از سه هرم بزرگ در مصر هستند که به عنوان مقبره فراعنه ساخته شده‌اند. هرم بزرگ جیزه تنها بازمانده از عجایب هفتگانه جهان باستان است.',
-      imageUrl: 'https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=400&h=300&fit=crop',
+      imageUrl: '/images/Heram.jpg',
       category: 'historical',
       location: 'قاهره',
       country: 'مصر'
@@ -109,7 +109,7 @@ export class PlacesComponent {
       id: 9,
       name: 'موزه لوور',
       description: 'موزه لوور یکی از بزرگترین و پربازدیدترین موزه‌های جهان است که در پاریس، فرانسه قرار دارد. این موزه خانه بیش از ۳۸۰,۰۰۰ اثر هنری از جمله تابلوی مونالیزا اثر لئوناردو داوینچی است.',
-      imageUrl: 'https://images.unsplash.com/photo-1566139884669-4b9356b4c040?w=400&h=300&fit=crop',
+      imageUrl: '/images/luvr.jpg',
       category: 'cultural',
       location: 'پاریس',
       country: 'فرانسه'
