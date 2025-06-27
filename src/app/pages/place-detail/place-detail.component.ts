@@ -1,139 +1,147 @@
 import { Component, type OnInit } from "@angular/core"
 import { CommonModule } from "@angular/common"
+import { PlaceDetailDTO } from "../../interfaces/placedetaildto"
+import { PlaceService } from "../../services/place.service"
+import { environment } from "../../../environments/environment"
+import { ActivatedRoute } from "@angular/router"
+import { ToastrService } from "ngx-toastr"
+import { Router } from "@angular/router"
 
 
-interface Place {
-  name: string
-  location: string
-  heroImage: string
-  rating: number
-  reviewCount: number
-  category: string
-}
 
 interface Review {
   name: string
   date: string
-  rating: number
+  isLiked: boolean
+  isDisliked: boolean
+  likeCount: number
+  dislikeCount: number
   comment: string
 }
 
-interface QuickInfo {
-  hours: string
-  price: string
-  bestTime: string
-  duration: string
-  phone: string
-  website: string
-}
 
-interface NearbyPlace {
-  name: string
-  image: string
-  distance: string
-  rating: number
-}
 
 @Component({
   selector: "app-place-details",
   templateUrl: "./place-detail.component.html",
-  imports:[CommonModule],
+  imports: [CommonModule],
   styleUrls: ["./place-detail.component.css"],
 })
 export class PlaceDetailComponent implements OnInit {
-  place: Place = {
-    name: "برج ایفل",
-    location: "پاریس، فرانسه",
-    heroImage: "/images/efel.jpg",
-    rating: 4.8,
-    reviewCount: 15420,
-    category: "جاذبه تاریخی",
-  }
+ 
 
-  galleryImages: string[] = [
-    "/placeholder.svg?height=200&width=200",
-    "/placeholder.svg?height=200&width=200",
-    "/placeholder.svg?height=200&width=200",
-    "/placeholder.svg?height=200&width=200",
-    "/placeholder.svg?height=200&width=200",
-    "/placeholder.svg?height=200&width=200",
-  ]
+
 
   reviews: Review[] = [
     {
       name: "علی احمدی",
       date: "۲ روز پیش",
-      rating: 5,
+      isLiked: false,
+      isDisliked: false,
+      likeCount: 15,
+      dislikeCount: 2,
       comment: "تجربه فوق‌العاده‌ای بود! منظره از بالای برج واقعاً خیره‌کننده است.",
     },
     {
       name: "مریم رضایی",
       date: "۱ هفته پیش",
-      rating: 4,
+      isLiked: false,
+      isDisliked: false,
+      likeCount: 8,
+      dislikeCount: 1,
       comment: "جای دیدنی عالی، اما در ساعات شلوغ بهتر است از قبل بلیط تهیه کنید.",
     },
     {
       name: "حسن محمدی",
       date: "۲ هفته پیش",
-      rating: 5,
+      isLiked: false,
+      isDisliked: false,
+      likeCount: 22,
+      dislikeCount: 0,
       comment: "یکی از بهترین تجربه‌های سفرم به پاریس. حتماً در شب هم ببینید.",
     },
   ]
 
-  quickInfo: QuickInfo = {
-    hours: "۹:۳۰ - ۲۳:۴۵",
-    price: "۲۹ یورو",
-    bestTime: "بهار و پاییز",
-    duration: "۲-۳ ساعت",
-    phone: "+33 8 92 70 12 39",
-    website: "www.toureiffel.paris",
+ 
+
+  baseimageurl = environment.imageBaseUrl;
+
+  placedetail: PlaceDetailDTO | null
+
+  placeid: number;
+
+  constructor(private placeservice: PlaceService, private route: ActivatedRoute, private toaster: ToastrService,
+    private router: Router
+  ) { }
+
+  ngOnInit(): void {
+    this.placeid = Number(this.route.snapshot.paramMap.get('id'));
+    this.placeservice.GetPlaceById(this.placeid).subscribe({
+      next: res => {
+       
+        this.placedetail = res.data;
+        console.log(this.placedetail)
+      },
+      error: err => {
+        console.error('خطای API:', err);
+        this.toaster.error('مکان پیدا نشد یا خطای ارتباط با سرور', 'خطا');
+        this.router.navigate(['/']);
+      }
+
+
+    })
+
   }
 
-  nearbyPlaces: NearbyPlace[] = [
-    {
-      name: "موزه لوور",
-      image: "/images/luvr.jpg",
-      distance: "۲.۵ کیلومتر",
-      rating: 4.7,
-    },
-    {
-      name: "کلیسای نوتردام",
-      image: "/images/noterdam.jpg",
-      distance: "۳.۱ کیلومتر",
-      rating: 4.6,
-    },
-    {
-      name: "قوس پیروزی",
-      image: "/images/victory.jpg",
-      distance: "۱.۸ کیلومتر",
-      rating: 4.5,
-    },
-  ]
 
-  constructor() {}
-
-  ngOnInit(): void {}
 
   onImageClick(index: number): void {
-    // پیاده‌سازی نمایش تصویر در مودال
     console.log("Image clicked:", index)
   }
 
   onViewAllReviews(): void {
-    // پیاده‌سازی نمایش همه نظرات
     console.log("View all reviews clicked")
   }
 
   onViewAllNearbyPlaces(): void {
-    // پیاده‌سازی نمایش همه مکان‌های نزدیک
     console.log("View all nearby places clicked")
   }
 
-  getStarArray(rating: number): boolean[] {
-    const stars = []
-    for (let i = 1; i <= 5; i++) {
-      stars.push(i <= rating)
+  onLike(item: any): void {
+    if (item.isLiked) {
+      // اگر قبلاً لایک شده، لایک را برداریم
+      item.isLiked = false
+      item.likeCount--
+    } else {
+      // لایک کنیم
+      item.isLiked = true
+      item.likeCount++
+
+      // اگر دیسلایک شده بود، آن را برداریم
+      if (item.isDisliked) {
+        item.isDisliked = false
+        item.dislikeCount--
+      }
     }
-    return stars
+    console.log("Like action:", item)
+  }
+
+  onDislike(item: any): void {
+    if (item.isDisliked) {
+      // اگر قبلاً دیسلایک شده، دیسلایک را برداریم
+      item.isDisliked = false
+      item.dislikeCount--
+    } else {
+      // دیسلایک کنیم
+      item.isDisliked = true
+      item.dislikeCount++
+
+      // اگر لایک شده بود، آن را برداریم
+      if (item.isLiked) {
+        item.isLiked = false
+        item.likeCount--
+      }
+    }
+    console.log("Dislike action:", item)
   }
 }

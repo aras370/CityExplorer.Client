@@ -14,31 +14,36 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "baseHref": "/",
-            
             "deployUrl": "/",
             "outputPath": "dist/city-explorer",
             "index": "src/index.html",
-            
             "browser": "src/main.ts",
-            
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
-               "glob": "**/*.{jpg,jpeg,png,gif,svg}",
+                "glob": "**/*.{jpg,jpeg,png,gif,svg}",
                 "input": "public",
-                 "output": ""
+                "output": ""
               }
             ],
             "styles": [
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
             "scripts": []
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+
               "budgets": [
                 {
                   "type": "initial",

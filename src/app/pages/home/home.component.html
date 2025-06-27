@@ -24,8 +24,7 @@
             اصلی</a>
           <a href="/adminpanel"
             class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">پنل ادمین</a>
-          <a href="#"
-            class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">راهنما</a>
+         
           <a routerLink="/aboutus"
             class="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm xl:text-base">درباره ما</a>
           <a routerLink="/contactus"
@@ -36,29 +35,22 @@
         </nav>
 
         <!-- Mobile Menu Button -->
-       <button
-  class="lg:hidden flex flex-col justify-center gap-[4px] px-2.5 py-1.5 border border-gray-300 rounded-md bg-white hover:bg-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 transition-all"
-  (click)="toggleMenu()"
->
-  <span
-    [class]="
+        <button
+          class="lg:hidden flex flex-col justify-center gap-[4px] px-2.5 py-1.5 border border-gray-300 rounded-md bg-white hover:bg-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 transition-all"
+          (click)="toggleMenu()">
+          <span [class]="
       'w-5 h-0.5 bg-gray-800 dark:bg-white transition-transform duration-300'
       + (isMenuOpen ? ' rotate-45 translate-y-[5px]' : '')
-    "
-  ></span>
-  <span
-    [class]="
+    "></span>
+          <span [class]="
       'w-5 h-0.5 bg-gray-800 dark:bg-white transition-opacity duration-300'
       + (isMenuOpen ? ' opacity-0' : '')
-    "
-  ></span>
-  <span
-    [class]="
+    "></span>
+          <span [class]="
       'w-5 h-0.5 bg-gray-800 dark:bg-white transition-transform duration-300'
       + (isMenuOpen ? ' -rotate-45 -translate-y-[5px]' : '')
-    "
-  ></span>
-</button>
+    "></span>
+        </button>
 
 
 
@@ -86,7 +78,7 @@
   <section class="relative pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8">
     <!-- Background Image -->
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <img src="/images/efel.jpg" alt="جاذبه‌های گردشگری جهان" class="w-full h-full object-cover" />
+      <img src="/images/Acropolis.jpg" alt="جاذبه‌های گردشگری جهان" class="w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-purple-900/60 to-black/40"></div>
     </div>
 
@@ -128,7 +120,7 @@
           <div *ngFor="let stat of stats" class="text-center">
             <div
               class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl sm:rounded-2xl mb-2 sm:mb-4 shadow-lg">
-              <i [class]="stat.icon + ' text-blue-600 text-base sm:text-lg lg:text-xl'"></i>
+              <i [class]="stat.icon"></i>
             </div>
             <div class="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1 sm:mb-2">{{stat.number}}</div>
             <div class="text-xs sm:text-sm text-gray-300">{{stat.label}}</div>
@@ -171,78 +163,77 @@
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-        <div *ngFor="let attraction of popularAttractions"
-          class="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-0 bg-white hover:scale-105 rounded-xl sm:rounded-2xl">
-          <div class="relative">
-            <img [src]="attraction.image" [alt]="attraction.name"
-              class="w-full h-48 sm:h-56 lg:h-64 object-cover group-hover:scale-110 transition-transform duration-700" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+      <ng-container *ngIf="places$ | async as places">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          <div *ngFor="let place of places"
+            class="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-0 bg-white hover:scale-105 rounded-xl sm:rounded-2xl">
 
-            <!-- Category Badge -->
-            <div class="absolute top-3 sm:top-4 right-3 sm:right-4">
-              <span
-                class="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
-                {{attraction.category}}
-              </span>
-            </div>
+            <div class="relative">
+              <img [src]="baseimageurl+place.imageName" [alt]="place.name"
+                class="w-full h-48 sm:h-56 lg:h-64 object-cover group-hover:scale-110 transition-transform duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
-            <!-- Action Buttons -->
-            <div
-              class="absolute top-3 sm:top-4 left-3 sm:left-4 flex space-x-1 sm:space-x-2 space-x-reverse opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <button (click)="likeAttraction(attraction)"
-                class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-1.5 sm:p-2 rounded-full border-0">
-                <i class="fas fa-heart text-xs sm:text-sm"></i>
-              </button>
-              <button (click)="shareAttraction(attraction)"
-                class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-1.5 sm:p-2 rounded-full border-0">
-                <i class="fas fa-share-alt text-xs sm:text-sm"></i>
-              </button>
-            </div>
-
-            <!-- Title Overlay -->
-            <div class="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 left-3 sm:left-4">
-              <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-1">{{attraction.name}}</h3>
-              <p class="text-gray-200 text-xs sm:text-sm flex items-center">
-                <i class="fas fa-map-marker-alt ml-1"></i>
-                {{attraction.city}}, {{attraction.country}}
-              </p>
-            </div>
-          </div>
-
-          <div class="p-4 sm:p-5 lg:p-6">
-            <p class="text-gray-600 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">{{attraction.description}}</p>
-
-            <div class="space-y-3 sm:space-y-4">
-              <!-- Rating and Visitors -->
-              <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-1 space-x-reverse">
-                  <i class="fas fa-star text-yellow-500 text-sm"></i>
-                  <span class="font-semibold text-gray-800 text-sm sm:text-base">{{attraction.rating}}</span>
-                  <span class="text-gray-500 text-xs sm:text-sm">(امتیاز)</span>
-                </div>
-                <div class="flex items-center space-x-1 space-x-reverse text-gray-500">
-                  <i class="fas fa-users text-xs sm:text-sm"></i>
-                  <span class="text-xs sm:text-sm">{{attraction.visitors}} بازدید</span>
-                </div>
+              <!-- Category Badge -->
+              <div class="absolute top-3 sm:top-4 right-3 sm:right-4">
+                <span
+                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
+                  {{ place.placeCategory }}
+                </span>
               </div>
 
-              <!-- Best Time -->
-              <div class="flex items-center space-x-2 space-x-reverse text-gray-600">
-                <i class="fas fa-clock text-xs sm:text-sm"></i>
-                <span class="text-xs sm:text-sm">بهترین زمان: {{attraction.bestTime}}</span>
+              <!-- Action Buttons -->
+              <div
+                class="absolute top-3 sm:top-4 left-3 sm:left-4 flex space-x-1 sm:space-x-2 space-x-reverse opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button 
+                  class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-1.5 sm:p-2 rounded-full border-0">
+                  <i class="fas fa-heart text-xs sm:text-sm"></i>
+                </button>
+                <button 
+                  class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-1.5 sm:p-2 rounded-full border-0">
+                  <i class="fas fa-share-alt text-xs sm:text-sm"></i>
+                </button>
               </div>
 
-              <!-- View Details Button -->
-              <a routerLink="/placeDetail"
-                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-2.5 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-300 hover:shadow-lg flex items-center justify-center text-sm sm:text-base">
-                <i class="fas fa-camera ml-1 sm:ml-2"></i>
-                مشاهده جزئیات
-              </a>
+              <!-- Title Overlay -->
+              <div class="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 left-3 sm:left-4">
+                <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-1">{{ place.name }}</h3>
+                <p class="text-gray-200 text-xs sm:text-sm flex items-center">
+                  <i class="fas fa-map-marker-alt ml-1"></i>
+                  {{ place.city }}, {{ place.country }}
+                </p>
+              </div>
+            </div>
+
+            <div class="p-4 sm:p-5 lg:p-6">
+
+              <div class="space-y-3 sm:space-y-4">
+                <!-- Rating and Visitors -->
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-1 space-x-reverse">
+                    <i class="fas fa-star text-yellow-500 text-sm"></i>
+                    <span class="font-semibold text-gray-800 text-sm sm:text-base">{{ place.countLike }}</span>
+                    <span class="text-gray-500 text-xs sm:text-sm">(امتیاز)</span>
+                  </div>
+                </div>
+
+                <!-- Best Time -->
+                <div class="flex items-center space-x-2 space-x-reverse text-gray-600">
+                  <i class="fas fa-clock text-xs sm:text-sm"></i>
+                  <span class="text-xs sm:text-sm">بهترین زمان بازدید: {{ place.bestTimeForVisit }}</span>
+                </div>
+
+                <!-- View Details Button -->
+                <button (click)="GoToPlaceDetail(place.id!)"
+                  class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-2.5 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-300 hover:shadow-lg flex items-center justify-center text-sm sm:text-base">
+                  <i class="fas fa-camera ml-1 sm:ml-2"></i>
+                  مشاهده جزئیات
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </ng-container>
+
     </div>
   </section>
 
@@ -283,7 +274,7 @@
           <h4 class="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white">تماس با ما</h4>
           <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
             <li>پشتیبانی ۲۴ ساعته</li>
-            <li class="break-all">ایمیل: hesamehsani72yahoo.com</li>
+            <li class="break-all">ایمیل: hesamehsani72&#64;yahoo.com</li>
             <li>تلفن: 09157898148</li>
           </ul>
         </div>

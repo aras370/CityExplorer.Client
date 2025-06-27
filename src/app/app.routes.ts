@@ -11,7 +11,7 @@ import { AdminPanelComponent } from './pages/adminpanel/adminpanel.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'placeDetail', component: PlaceDetailComponent },
+    { path: 'placeDetail/:id', component: PlaceDetailComponent },
     { path: 'places', component: PlacesComponent },
     { path: 'aboutus', component: AboutusComponent },
     { path: 'contactus', component: ContactUsComponent },
