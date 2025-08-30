@@ -8,6 +8,7 @@ import { FilterComponent } from "../../components/filter/filter.component";
 import { PlacesforadminComponent } from "../../components/placesforadmin/placesforadmin.component";
 import { AddnewplacebyadminComponent } from "../../components/addnewplacebyadmin/addnewplacebyadmin.component";
 import { Stats } from "../../interfaces/stats";
+import { EditplacebyadminComponent } from "../../components/editplacebyadmin/editplacebyadmin.component";
 
 
 
@@ -16,7 +17,7 @@ import { Stats } from "../../interfaces/stats";
 @Component({
   selector: "app-admin-panel",
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, FilterComponent, PlacesforadminComponent, AddnewplacebyadminComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, FilterComponent, PlacesforadminComponent, AddnewplacebyadminComponent, EditplacebyadminComponent],
   templateUrl: "./adminpanel.component.html",
   styleUrls: ["./adminpanel.component.css"],
 })
@@ -39,6 +40,7 @@ export class AdminPanelComponent implements OnInit {
     this.modal.openmodal();
   }
 
+
   stats: Stats = {
     total: 0,
     approved: 0,
@@ -53,7 +55,7 @@ export class AdminPanelComponent implements OnInit {
   }
 
 
-  
+
 
   onPlaceChanged() {
     console.log('💥 Parent caught the event');
@@ -71,6 +73,11 @@ export class AdminPanelComponent implements OnInit {
       });
   }
 
+  showeditmodal = false
 
+
+  openmodal(value: boolean) {
+    this.showeditmodal = value;
+  }
 
 }

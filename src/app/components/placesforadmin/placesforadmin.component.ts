@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-placesforadmin',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './placesforadmin.component.html',
   styleUrl: './placesforadmin.component.css'
 })
@@ -147,5 +147,12 @@ export class PlacesforadminComponent implements OnInit {
   itemsPerPage = 4;
   totalPages = 1;
   paginatedPlaces$: Observable<PlaceDTO[]>;
+
+
+  showeditmodal = new EventEmitter<boolean>();
+
+  openeditmodal() {
+    this.showeditmodal.emit(true);
+  }
 
 }

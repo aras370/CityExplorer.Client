@@ -1,0 +1,158 @@
+<div [hidden]="!showmodal"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-light bg-opacity-40 overflow-y-auto p-6"
+  >
+  <div class="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-3xl max-h-[90vh] overflow-y-auto relative scroll-smooth"
+    (click)="$event.stopPropagation()">
+    <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">افزودن مکان جدید</h2>
+
+    <form class="space-y-6">
+
+      <!-- نام مکان -->
+      <div>
+        <label class="block mb-2 font-semibold text-gray-700">نام مکان</label>
+        <input type="text" formControlName="name"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+        <!-- <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="text-sm text-red-600 mt-1">
+          <small *ngIf="form.get('name')?.errors?.['required']">نام الزامی است.</small>
+        </div> -->
+      </div>
+
+      <!-- شهر و کشور -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block mb-2 font-semibold text-gray-700">شهر</label>
+          <input type="text" formControlName="city"
+            class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+          <!-- <div *ngIf="form.get('city')?.invalid && form.get('city')?.touched" class="text-sm text-red-600 mt-1">
+            <small *ngIf="form.get('city')?.errors?.['required']">شهر الزامی است.</small>
+          </div> -->
+        </div>
+        <div>
+          <label class="block mb-2 font-semibold text-gray-700">کشور</label>
+          <input type="text" formControlName="country"
+            class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+          <!-- <div *ngIf="form.get('country')?.invalid && form.get('country')?.touched" class="text-sm text-red-600 mt-1">
+            <small *ngIf="form.get('country')?.errors?.['required']">کشور الزامی است.</small>
+          </div> -->
+        </div>
+      </div>
+
+      <!-- دسته‌بندی -->
+      <div>
+        <label class="block mb-2 font-semibold text-gray-700">دسته‌بندی</label>
+        <select formControlName="categoryId"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+          <!-- <div *ngFor="let item of placecategories">
+            <option [value]="item.id" >{{item.name}}</option>
+          </div> -->
+          <!-- گزینه‌ها را اینجا قرار بده -->
+        </select>
+        <!-- <div *ngIf="form.get('categoryId')?.invalid && form.get('categoryId')?.touched"
+          class="text-sm text-red-600 mt-1">
+          <small *ngIf="form.get('categoryId')?.errors?.['required']">دسته‌بندی الزامی است.</small>
+        </div> -->
+      </div>
+
+      <!-- توضیحات -->
+      <div>
+        <label class="block mb-2 font-semibold text-gray-700">توضیحات</label>
+        <textarea formControlName="description" rows="3"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none"></textarea>
+        <!-- <div *ngIf="form.get('description')?.invalid && form.get('description')?.touched"
+          class="text-sm text-red-600 mt-1">
+          <small *ngIf="form.get('description')?.errors?.['required']">توضیحات الزامی است.</small>
+        </div> -->
+      </div>
+
+      <!-- قدمت مکان -->
+      <div>
+        <label class="block mb-2 font-semibold text-gray-700">قدمت مکان (سال)</label>
+        <input type="text" formControlName="age"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+        <!-- <div *ngIf="form.get('age')?.invalid && form.get('age')?.touched" class="text-sm text-red-600 mt-1">
+          <small *ngIf="form.get('age')?.errors?.['required']">قدمت مکان الزامی است.</small>
+        </div> -->
+      </div>
+
+      <!-- ساعات مجاز بازدید -->
+      <div>
+        <label class="block mb-2 font-semibold text-gray-700">ساعات مجاز بازدید</label>
+        <input type="text" formControlName="visitingHours"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+        <!-- <div *ngIf="form.get('visitingHours')?.invalid && form.get('visitingHours')?.touched"
+          class="text-sm text-red-600 mt-1">
+          <small *ngIf="form.get('visitingHours')?.errors?.['required']">ساعات بازدید از مکان الزامی است.</small>
+        </div> -->
+      </div>
+
+      <!-- قیمت بلیط -->
+      <div>
+        <label class="block mb-2 font-semibold text-gray-700">قیمت بلیط (دلار)</label>
+        <input type="text" formControlName="thicketPrice"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+        <!-- <div *ngIf="form.get('thicketPrice')?.invalid && form.get('thicketPrice')?.touched"
+          class="text-sm text-red-600 mt-1">
+          <small *ngIf="form.get('thicketPrice')?.errors?.['required']">قیمت الزامی است.</small>
+        </div> -->
+      </div>
+
+      <!-- وب سایت -->
+      <div>
+        <label class="block mb-2 font-semibold text-gray-700">وب سایت</label>
+        <input type="text" formControlName="webSite"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+        <!-- <div *ngIf="form.get('webSite')?.invalid && form.get('webSite')?.touched" class="text-sm text-red-600 mt-1">
+          <small *ngIf="form.get('webSite')?.errors?.['required']">وب سایت الزامی است.</small>
+        </div> -->
+      </div>
+
+      <!-- بهترین زمان بازدید -->
+      <div>
+        <label class="block mb-2 font-semibold text-gray-700">بهترین زمان بازدید</label>
+        <input type="text" formControlName="bestTimeForVisit"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+        <!-- <div *ngIf="form.get('bestTimeForVisit')?.invalid && form.get('bestTimeForVisit')?.touched"
+          class="text-sm text-red-600 mt-1">
+          <small *ngIf="form.get('bestTimeForVisit')?.errors?.['required']">بهترین زمان بازدید الزامی است.</small>
+        </div> -->
+      </div>
+
+      <!-- عکس -->
+      <div>
+        <label class="block mb-2 font-semibold text-gray-700">عکس</label>
+        <input type="file" accept="image/*" id="fileInput" 
+          class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition" />
+        <!-- <div *ngIf="form.get('image')?.invalid && form.get('image')?.touched" class="text-red-600 text-sm">
+          <small>تصویر الزامی است.</small>
+        </div> -->
+        <div *ngIf="" class="mt-4">
+          <div class="flex justify-between items-center mb-2">
+            <p class="text-sm font-medium text-gray-700">پیش‌نمایش عکس:</p>
+            <button type="button" 
+              class="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 font-medium text-sm transition-colors duration-200 border border-red-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+              حذف عکس
+            </button>
+          </div>
+          <img [src]="" alt="Preview" class="max-h-60 w-auto rounded-lg shadow-md object-contain" />
+        </div>
+      </div>
+
+      <!-- دکمه‌ها -->
+      <div class="flex justify-between mt-6">
+        <button type="button" (click)="closeeditmodal()"
+          class="px-5 py-2 rounded-xl bg-gray-300 hover:bg-gray-400 transition">
+          بستن
+        </button>
+        <button type="submit" class="px-5 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition">
+          ذخیره
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
