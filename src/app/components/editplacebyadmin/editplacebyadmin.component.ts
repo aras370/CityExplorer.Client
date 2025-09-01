@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
@@ -11,15 +11,13 @@ import { CommonModule } from '@angular/common';
 export class EditplacebyadminComponent {
 
 
- showmodal = false;
+@Input() showmodal :boolean;
 
-openeditmodal(){
-  this.showmodal=true
-}
-
+@Output() closemodal=new EventEmitter();
 
 closeeditmodal(){
   this.showmodal=false
+  this.closemodal.emit();
 }
 
 

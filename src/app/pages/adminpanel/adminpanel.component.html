@@ -73,12 +73,12 @@
     <app-filter (searchparams)="onSearchParamsChange($event)"></app-filter>
 
     <!-- Attractions Table -->
-    <app-placesforadmin (showeditmodal)="openmodal($event)" (placeChanged)="onPlaceChanged()" [filterParams]="filterParams"></app-placesforadmin>
+    <app-placesforadmin (showitmodal)="openmodal($event)" (placeChanged)="onPlaceChanged()" [filterParams]="filterParams"></app-placesforadmin>
 
     <!-- Add/Edit Modal -->
     <app-addnewplacebyadmin (creationplace)="onPlaceChanged()"></app-addnewplacebyadmin>
 
-    <app-editplacebyadmin ></app-editplacebyadmin>
+    <app-editplacebyadmin (closemodal)="closemodal()" [showmodal]="showeditmodal" ></app-editplacebyadmin>
 
   </main>
 </div>

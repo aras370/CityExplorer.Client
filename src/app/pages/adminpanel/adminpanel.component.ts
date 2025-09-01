@@ -80,4 +80,8 @@ export class AdminPanelComponent implements OnInit {
     this.showeditmodal = value;
   }
 
+  closemodal() {
+    this.showeditmodal = false
+  }
+
 }
