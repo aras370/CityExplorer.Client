@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: "app-editplacebyadmin",
@@ -8,16 +9,18 @@ import { CommonModule } from "@angular/common";
   styleUrl: "./editplacebyadmin.component.css",
 })
 export class EditplacebyadminComponent {
-  @Input() showmodal = false;
 
-  openeditmodal() {
-    this.showmodal = true;
-  }
 
-  @Output() closemodal = new EventEmitter();
+ showmodal = false;
 
-  closeeditmodal() {
-    this.showmodal = false;
-    this.closemodal.emit();
-  }
+openeditmodal(){
+  this.showmodal=true
+}
+
+
+closeeditmodal(){
+  this.showmodal=false
+}
+
+
 }
