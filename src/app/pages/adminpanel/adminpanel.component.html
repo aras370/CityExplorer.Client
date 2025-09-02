@@ -78,7 +78,7 @@
     <!-- Add/Edit Modal -->
     <app-addnewplacebyadmin (creationplace)="onPlaceChanged()"></app-addnewplacebyadmin>
 
-    <app-editplacebyadmin ></app-editplacebyadmin>
+    <app-editplacebyadmin (closemodal)="closemodal()" [showmodal]="showeditmodal" ></app-editplacebyadmin>
 
   </main>
 </div>

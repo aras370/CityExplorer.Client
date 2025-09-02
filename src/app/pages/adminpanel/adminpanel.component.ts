@@ -33,7 +33,7 @@ export class AdminPanelComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private placeservice: PlaceService) { }
 
-  @ViewChild(AddnewplacebyadminComponent) modal!: AddnewplacebyadminComponent;
+  @ViewChild(AddnewplacebyadminComponent) modal: AddnewplacebyadminComponent;
 
 
   showmodal() {
@@ -75,6 +75,9 @@ export class AdminPanelComponent implements OnInit {
 
   showeditmodal = false
 
+  closemodal(){
+    this.showeditmodal=false;
+  }
 
   openmodal(value: boolean) {
     this.showeditmodal = value;
