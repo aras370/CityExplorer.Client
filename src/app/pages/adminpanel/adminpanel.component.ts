@@ -1,4 +1,4 @@
-import { Component, type OnInit, viewChild, ViewChild } from "@angular/core"
+import { Component, type OnInit, Output, viewChild, ViewChild } from "@angular/core"
 import { CommonModule } from "@angular/common"
 import { FormsModule, ReactiveFormsModule, FormBuilder, type FormGroup, Validators } from "@angular/forms"
 import { PlaceService } from '../../services/place.service';
@@ -73,7 +73,9 @@ export class AdminPanelComponent implements OnInit {
       });
   }
 
-  showeditmodal = false
+@Output()  showeditmodal :boolean;
+
+
 
   closemodal(){
     this.showeditmodal=false;
@@ -83,8 +85,5 @@ export class AdminPanelComponent implements OnInit {
     this.showeditmodal = value;
   }
 
-  closemodal() {
-    this.showeditmodal = false
-  }
 
 }

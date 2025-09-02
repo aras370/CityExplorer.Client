@@ -149,14 +149,10 @@ export class PlacesforadminComponent implements OnInit {
   paginatedPlaces$: Observable<PlaceDTO[]>;
 
 
-<<<<<<< HEAD
  @Output() showeditmodal = new EventEmitter<boolean>();
-=======
-@Output() showitmodal = new EventEmitter<boolean>();
->>>>>>> a758790fa7ed38a7f22214596a43bd0e53e69fa6
 
   openeditmodal() {
-    this.showitmodal.emit(true);
+    this.showeditmodal.emit(true);
   }
 
 }
